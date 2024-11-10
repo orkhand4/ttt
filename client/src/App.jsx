@@ -47,8 +47,23 @@ const App = () => {
             <span className="text-red-700">Maximum 16 simvol daxil edin</span>
           )}
           {errors.name && errors.name.type === "pattern" && (
-            <span className="text-red-700">Ancaq boyuk ve ya kichik herflerden istifade edin</span>
+            <span className="text-red-700">Ancaq herflerden istifade edin</span>
           )}
+
+          <select
+           id="gender"
+           {...register('gender', {
+            required: true,
+           })}
+           className="text-2xl border py-2 px-4 text-white w-full bg-transparent outline-none border-gray-600 transition-all duration-300 hover:rounded-lg inpt-focus"
+           >
+            <option value="Choose Gender">Choose Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+           </select>
+           {errors.gender && errors.gender.type === 'required' && (
+            <span className="text-red-700">Gender qeyd edin</span>
+           )}
 
           <input
             id="email"
