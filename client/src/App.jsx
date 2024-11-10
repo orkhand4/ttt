@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 
 const App = () => {
   const {
+    watch,
     register,
     handleSubmit,
     formState: { errors },
@@ -98,6 +99,46 @@ const App = () => {
           )}
           {errors.age && errors.age.type === "pattern" && (
             <span className="text-red-700">Ancaq reqemlerden istifade edin</span>
+          )}
+          
+          <input
+            id="password"
+            {...register("password", {
+              required: true,
+              minLength: 8,
+              maxLength: 20,
+            })}
+            className="text-2xl border py-2 px-4 text-white w-full bg-transparent outline-none border-gray-600 transition-all duration-300 hover:rounded-lg inpt-focus"
+            type="text"
+            placeholder="Enter password.."
+          />
+
+          {errors.password && errors.password.type === "required" && (
+            <span className="text-red-700">Parol hissesini doldurun</span>
+          )}
+          {errors.password && errors.password.type === "minLength" && (
+            <span className="text-red-700">Minimum 8 simvol daxil edin</span>
+          )}
+          {errors.password && errors.password.type === "maxLength" && (
+            <span className="text-red-700">Maximum 20 simvol daxil edin</span>
+          )}
+
+          <input
+            id="resetPassword"
+            {...register("resetPassword", {
+              required: true,
+              validate: (value) => value === watch ('password'),
+            })}
+            className="text-2xl border py-2 px-4 text-white w-full bg-transparent outline-none border-gray-600 transition-all duration-300 hover:rounded-lg inpt-focus"
+            type="text"
+            placeholder="Enter password.."
+          />
+
+          {errors.resetPassword && errors.resetPassword.type === "required" && (
+            <span className="text-red-700">Tekrar parolu yazin</span>
+          )}
+          {errors.resetPassword && errors.resetPassword.type === "validate" && (
+            <span className="text-red-700">Tekrar parol duzgun deyil</span>
           )}
           
 
