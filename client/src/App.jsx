@@ -9,8 +9,9 @@ const App = () => {
     formState: { errors },
   } = useForm();
 
-  const demo = () => {
-    alert("Demo function is working!");
+  const demo = (data) => {
+    console.log(data);
+    ;
   };
 
   return (
@@ -109,7 +110,7 @@ const App = () => {
               maxLength: 20,
             })}
             className="text-2xl border py-2 px-4 text-white w-full bg-transparent outline-none border-gray-600 transition-all duration-300 hover:rounded-lg inpt-focus"
-            type="text"
+            type="password"
             placeholder="Enter password.."
           />
 
@@ -130,7 +131,7 @@ const App = () => {
               validate: (value) => value === watch ('password'),
             })}
             className="text-2xl border py-2 px-4 text-white w-full bg-transparent outline-none border-gray-600 transition-all duration-300 hover:rounded-lg inpt-focus"
-            type="text"
+            type="password"
             placeholder="Enter password.."
           />
 
